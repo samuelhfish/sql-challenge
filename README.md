@@ -78,6 +78,7 @@ ERD is located in the EmployeeSQL folder and the file is titled "ERD-SQL-Challen
     SELECT * FROM department_managers
 
 -- 1. List the employee number, last name, first name, sex, and salary of each employee.
+    
     SELECT employees.employee_number,
         employees.last_name,
         employees.first_name,
@@ -88,6 +89,7 @@ ERD is located in the EmployeeSQL folder and the file is titled "ERD-SQL-Challen
     salaries.employee_number=employees.employee_number;
 
 -- 2. List the first name, last name, and hire date for the employees who were hired in 1986.
+    
     SELECT employees.employee_number,
         employees.last_name,
         employees.first_name,
@@ -97,6 +99,7 @@ ERD is located in the EmployeeSQL folder and the file is titled "ERD-SQL-Challen
     ORDER BY hire_date ASC;
 
 -- 3. List the manager of each department along with their department number, department name, employee number, last name, and first name.
+    
     SELECT
                 department_managers.department_number,
                 departments.department_name,
