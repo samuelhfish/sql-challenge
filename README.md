@@ -17,30 +17,39 @@ ERD is located in the EmployeeSQL folder and the file is titled "ERD-SQL-Challen
         sex VARCHAR(30)   NOT NULL,
         hire_date DATE   NOT NULL,
         CONSTRAINT pk_employees PRIMARY KEY (
-            employee_number
+        employee_number
         )
     );
 
     CREATE TABLE salaries (
         employee_number INT   NOT NULL,
-        salary FLOAT   NOT NULL
+        salary FLOAT   NOT NULL,
+        CONSTRAINT pk_salaries PRIMARY KEY (
+        employee_number
+        )
     );
 
     CREATE TABLE department_employees (
         employee_number INT   NOT NULL,
-        department_number VARCHAR(30)   NOT NULL
+        department_number VARCHAR(30)   NOT NULL,
+        FOREIGN KEY (employee_number) REFERENCES employees (employee_number),
+        FOREIGN KEY (department_number) REFERENCES departments (department_number),
+        PRIMARY KEY (employee_number, department_number)
     );
 
-    CREATE TABLE department_managers (
+    CREATE TABLE deptartment_managers (
         department_number VARCHAR(30)   NOT NULL,
-        employee_number INT   NOT NULL
+        employee_number INT   NOT NULL,
+        FOREIGN KEY (employee_number) REFERENCES employees (employee_number),
+        FOREIGN KEY (department_number) REFERENCES departments (department_number),
+        PRIMARY KEY (department_number, employee_number)
     );
 
     CREATE TABLE departments (
         department_number VARCHAR(30)   NOT NULL,
         department_name VARCHAR(30)   NOT NULL,
         CONSTRAINT pk_departments PRIMARY KEY (
-            department_number
+        department_number
         )
     );
 
@@ -48,7 +57,7 @@ ERD is located in the EmployeeSQL folder and the file is titled "ERD-SQL-Challen
         employee_title_id VARCHAR(30)   NOT NULL,
         title VARCHAR(30)   NOT NULL,
         CONSTRAINT pk_titles PRIMARY KEY (
-            employee_title_id
+        employee_title_id
         )
     );
 
